@@ -1,4 +1,4 @@
-#Cakelight
+# Cakelight
 A lighter version of [Cake-Redux](https://github.com/javaBin/cake-redux) made with the React framework.
 
 
