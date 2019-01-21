@@ -28,20 +28,20 @@ class YearSelector extends React.Component {
         throw Error(error);
       })
       .finally(() => {
-        console.log("Finally kallet");
         this.setState({ isFetching: false });
       });
   }
 
   render() {
-
-    return <React.Fragment>
-      <select>
-        {this.state.text.map(conference => (
-          <option key={conference.id}>{conference.name}</option>
-        ))}
-      </select>
-    </React.Fragment>;
+    return (
+      <React.Fragment>
+        <select>
+          {this.state.text.map(conference => (
+            <option key={conference.id}>{conference.name}</option>
+          ))}
+        </select>
+      </React.Fragment>
+    );
   }
 }
 
