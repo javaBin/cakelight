@@ -27,6 +27,11 @@ const columns = [
   }
 ];
 
+const selectRow = {
+  mode: 'radio',
+  clickToSelect: true
+};
+
 class TableData extends React.Component {
   constructor(props) {
     super(props);
@@ -34,16 +39,23 @@ class TableData extends React.Component {
   }
 
   render() {
+    const rowEvents = {
+      onClick: (e, row, rowIndex) => {
+        console.log(row.sessionId);
+      }
+    };
     return (
       <>
         <ToolkitProvider
           keyField="id"
           data={this.props.sessionList}
           columns={columns}
+          selectRow={ selectRow }
           search
           striped
           hover
           condensed
+
         >
           {props => (
             <div>
@@ -51,7 +63,7 @@ class TableData extends React.Component {
               <SearchBar {...props.searchProps} />
               <hr />
 
-              <BootstrapTable {...props.baseProps} />
+              <BootstrapTable {...props.baseProps}  rowEvents={ rowEvents } />
             </div>
           )}
         </ToolkitProvider>

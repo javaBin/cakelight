@@ -1,6 +1,7 @@
 import React from "react";
 import YearSelector from "./YearSelector";
 import TableData from "./TableData";
+import logo from "../viking_duke.svg";
 
 class TableDataContainer extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class TableDataContainer extends React.Component {
 
   componentDidMount() {
     this.getServerData();
-    this.getTableData("3baa25d3-9cca-459a-90d7-9fc349209289");
+    this.getTableData("3baa25d3-9cca-459a-90d7-9fc349209289"); //todo avoid hardcoded id for the initial load of sessions.
   }
 
   getServerData() {
@@ -45,7 +46,7 @@ class TableDataContainer extends React.Component {
     fetch(`https://sleepingpill.javazone.no/data/conference/${value}/session`, {
       method: "GET",
       headers: new Headers({
-        Authorization: "Basic " + btoa(`brukernavnHerTakk:passordHerTakk`),
+        Authorization: "Basic " + btoa(`user:password`),
         "Content-Type": "application/x-www-form-urlencoded"
       })
     })
@@ -74,6 +75,8 @@ class TableDataContainer extends React.Component {
   render() {
     return (
       <div className="col-md-10 mx-auto">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h2>Cakelight</h2>
         <YearSelector
           conferences={this.state.conferences}
           changeSession={this.onChange}
