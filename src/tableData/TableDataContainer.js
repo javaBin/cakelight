@@ -43,7 +43,7 @@ class TableDataContainer extends React.Component {
 
   getTableData(value) {
     this.setState({ isFetching: true });
-    fetch(`https://sleepingpill.javazone.no/data/conference/${value}/session`, {
+    fetch(`/data/conference/${value}/session`, {
       method: "GET",
       headers: new Headers({
         Authorization: "Basic " + btoa(`user:password`),
