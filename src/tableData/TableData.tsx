@@ -32,30 +32,17 @@ const selectRow = {
   clickToSelect: true
 };
 
-class TableData extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { data: props.data };
-  }
+interface TableDataProps {
+    sessionList: any
+}
 
-  render() {
-    const rowEvents = {
-      onClick: (e, row, rowIndex) => {
-        console.log(row.sessionId);
-      }
-    };
+const TableData: React.FC<TableDataProps>  = (props) =>  {
     return (
-      <>
         <ToolkitProvider
           keyField="id"
-          data={this.props.sessionList}
+          data={props.sessionList}
           columns={columns}
-          selectRow={ selectRow }
           search
-          striped
-          hover
-          condensed
-
         >
           {props => (
             <div>
@@ -63,13 +50,11 @@ class TableData extends React.Component {
               <SearchBar {...props.searchProps} />
               <hr />
 
-              <BootstrapTable {...props.baseProps}  rowEvents={ rowEvents } />
+              <BootstrapTable {...props.baseProps}/>
             </div>
           )}
         </ToolkitProvider>
-      </>
     );
-  }
-}
+};
 
 export default TableData;
